@@ -29,90 +29,91 @@ void CompileShaders() {
 }
 
 void CrearIHM() {
-    // Colores personalizados (no puros)
-    float rI = 0.0f, gI = 0.7f, bI = 0.7f; // Cyan/Teal
-    float rH = 0.9f, gH = 0.5f, bH = 0.0f; // Naranja
-    float rM = 0.6f, gM = 0.8f, bM = 0.2f; // Lima
+    // 1. Todas las letras del mismo color (Dorado)  
+    float r = 1.0f, g = 0.8f, b = 0.0f; 
 
     GLfloat vertices[] = {
-        // --- LETRA I (16 Triángulos / 48 vértices) ---
+        // --- LETRA I (Esquina inferior izquierda) ---
+        // Desplazada a la posición X: -0.9 a -0.6, Y: -0.9 a -0.5
         // Top (3 cuadros)
-        -0.7f, 0.3f, 0.0f, rI,gI,bI, -0.6f, 0.3f, 0.0f, rI,gI,bI, -0.6f, 0.4f, 0.0f, rI,gI,bI,
-        -0.7f, 0.3f, 0.0f, rI,gI,bI, -0.6f, 0.4f, 0.0f, rI,gI,bI, -0.7f, 0.4f, 0.0f, rI,gI,bI,
-        -0.6f, 0.3f, 0.0f, rI,gI,bI, -0.5f, 0.3f, 0.0f, rI,gI,bI, -0.5f, 0.4f, 0.0f, rI,gI,bI,
-        -0.6f, 0.3f, 0.0f, rI,gI,bI, -0.5f, 0.4f, 0.0f, rI,gI,bI, -0.6f, 0.4f, 0.0f, rI,gI,bI,
-        -0.5f, 0.3f, 0.0f, rI,gI,bI, -0.4f, 0.3f, 0.0f, rI,gI,bI, -0.4f, 0.4f, 0.0f, rI,gI,bI,
-        -0.5f, 0.3f, 0.0f, rI,gI,bI, -0.4f, 0.4f, 0.0f, rI,gI,bI, -0.5f, 0.4f, 0.0f, rI,gI,bI,
+        -0.9f, -0.6f, 0.0f, r,g,b, -0.8f, -0.6f, 0.0f, r,g,b, -0.8f, -0.5f, 0.0f, r,g,b,
+        -0.9f, -0.6f, 0.0f, r,g,b, -0.8f, -0.5f, 0.0f, r,g,b, -0.9f, -0.5f, 0.0f, r,g,b,
+        -0.8f, -0.6f, 0.0f, r,g,b, -0.7f, -0.6f, 0.0f, r,g,b, -0.7f, -0.5f, 0.0f, r,g,b,
+        -0.8f, -0.6f, 0.0f, r,g,b, -0.7f, -0.5f, 0.0f, r,g,b, -0.8f, -0.5f, 0.0f, r,g,b,
+        -0.7f, -0.6f, 0.0f, r,g,b, -0.6f, -0.6f, 0.0f, r,g,b, -0.6f, -0.5f, 0.0f, r,g,b,
+        -0.7f, -0.6f, 0.0f, r,g,b, -0.6f, -0.5f, 0.0f, r,g,b, -0.7f, -0.5f, 0.0f, r,g,b,
         // Poste (2 cuadros)
-        -0.6f, 0.2f, 0.0f, rI,gI,bI, -0.5f, 0.2f, 0.0f, rI,gI,bI, -0.5f, 0.3f, 0.0f, rI,gI,bI,
-        -0.6f, 0.2f, 0.0f, rI,gI,bI, -0.5f, 0.3f, 0.0f, rI,gI,bI, -0.6f, 0.3f, 0.0f, rI,gI,bI,
-        -0.6f, 0.1f, 0.0f, rI,gI,bI, -0.5f, 0.1f, 0.0f, rI,gI,bI, -0.5f, 0.2f, 0.0f, rI,gI,bI,
-        -0.6f, 0.1f, 0.0f, rI,gI,bI, -0.5f, 0.2f, 0.0f, rI,gI,bI, -0.6f, 0.2f, 0.0f, rI,gI,bI,
+        -0.8f, -0.7f, 0.0f, r,g,b, -0.7f, -0.7f, 0.0f, r,g,b, -0.7f, -0.6f, 0.0f, r,g,b,
+        -0.8f, -0.7f, 0.0f, r,g,b, -0.7f, -0.6f, 0.0f, r,g,b, -0.8f, -0.6f, 0.0f, r,g,b,
+        -0.8f, -0.8f, 0.0f, r,g,b, -0.7f, -0.8f, 0.0f, r,g,b, -0.7f, -0.7f, 0.0f, r,g,b,
+        -0.8f, -0.8f, 0.0f, r,g,b, -0.7f, -0.7f, 0.0f, r,g,b, -0.8f, -0.7f, 0.0f, r,g,b,
         // Base (3 cuadros)
-        -0.7f, 0.0f, 0.0f, rI,gI,bI, -0.6f, 0.0f, 0.0f, rI,gI,bI, -0.6f, 0.1f, 0.0f, rI,gI,bI,
-        -0.7f, 0.0f, 0.0f, rI,gI,bI, -0.6f, 0.1f, 0.0f, rI,gI,bI, -0.7f, 0.1f, 0.0f, rI,gI,bI,
-        -0.6f, 0.0f, 0.0f, rI,gI,bI, -0.5f, 0.0f, 0.0f, rI,gI,bI, -0.5f, 0.1f, 0.0f, rI,gI,bI,
-        -0.6f, 0.0f, 0.0f, rI,gI,bI, -0.5f, 0.1f, 0.0f, rI,gI,bI, -0.6f, 0.1f, 0.0f, rI,gI,bI,
-        -0.5f, 0.0f, 0.0f, rI,gI,bI, -0.4f, 0.0f, 0.0f, rI,gI,bI, -0.4f, 0.1f, 0.0f, rI,gI,bI,
-        -0.5f, 0.0f, 0.0f, rI,gI,bI, -0.4f, 0.1f, 0.0f, rI,gI,bI, -0.5f, 0.1f, 0.0f, rI,gI,bI,
+        -0.9f, -0.9f, 0.0f, r,g,b, -0.8f, -0.9f, 0.0f, r,g,b, -0.8f, -0.8f, 0.0f, r,g,b,
+        -0.9f, -0.9f, 0.0f, r,g,b, -0.8f, -0.8f, 0.0f, r,g,b, -0.9f, -0.8f, 0.0f, r,g,b,
+        -0.8f, -0.9f, 0.0f, r,g,b, -0.7f, -0.9f, 0.0f, r,g,b, -0.7f, -0.8f, 0.0f, r,g,b,
+        -0.8f, -0.9f, 0.0f, r,g,b, -0.7f, -0.8f, 0.0f, r,g,b, -0.8f, -0.8f, 0.0f, r,g,b,
+        -0.7f, -0.9f, 0.0f, r,g,b, -0.6f, -0.9f, 0.0f, r,g,b, -0.6f, -0.8f, 0.0f, r,g,b,
+        -0.7f, -0.9f, 0.0f, r,g,b, -0.6f, -0.8f, 0.0f, r,g,b, -0.7f, -0.8f, 0.0f, r,g,b,
 
-        // --- LETRA H (18 Triángulos / 54 vértices) ---
+        // --- LETRA H (Centro) ---
+        // Desplazada a la posición X: -0.2 a 0.1, Y: -0.2 a 0.2
         // Poste Izq (4 cuadros)
-        -0.2f, 0.0f, 0.0f, rH,gH,bH, -0.1f, 0.0f, 0.0f, rH,gH,bH, -0.1f, 0.1f, 0.0f, rH,gH,bH,
-        -0.2f, 0.0f, 0.0f, rH,gH,bH, -0.1f, 0.1f, 0.0f, rH,gH,bH, -0.2f, 0.1f, 0.0f, rH,gH,bH,
-        -0.2f, 0.1f, 0.0f, rH,gH,bH, -0.1f, 0.1f, 0.0f, rH,gH,bH, -0.1f, 0.2f, 0.0f, rH,gH,bH,
-        -0.2f, 0.1f, 0.0f, rH,gH,bH, -0.1f, 0.2f, 0.0f, rH,gH,bH, -0.2f, 0.2f, 0.0f, rH,gH,bH,
-        -0.2f, 0.2f, 0.0f, rH,gH,bH, -0.1f, 0.2f, 0.0f, rH,gH,bH, -0.1f, 0.3f, 0.0f, rH,gH,bH,
-        -0.2f, 0.2f, 0.0f, rH,gH,bH, -0.1f, 0.3f, 0.0f, rH,gH,bH, -0.2f, 0.3f, 0.0f, rH,gH,bH,
-        -0.2f, 0.3f, 0.0f, rH,gH,bH, -0.1f, 0.3f, 0.0f, rH,gH,bH, -0.1f, 0.4f, 0.0f, rH,gH,bH,
-        -0.2f, 0.3f, 0.0f, rH,gH,bH, -0.1f, 0.4f, 0.0f, rH,gH,bH, -0.2f, 0.4f, 0.0f, rH,gH,bH,
+        -0.2f, -0.2f, 0.0f, r,g,b, -0.1f, -0.2f, 0.0f, r,g,b, -0.1f, -0.1f, 0.0f, r,g,b,
+        -0.2f, -0.2f, 0.0f, r,g,b, -0.1f, -0.1f, 0.0f, r,g,b, -0.2f, -0.1f, 0.0f, r,g,b,
+        -0.2f, -0.1f, 0.0f, r,g,b, -0.1f, -0.1f, 0.0f, r,g,b, -0.1f,  0.0f, 0.0f, r,g,b,
+        -0.2f, -0.1f, 0.0f, r,g,b, -0.1f,  0.0f, 0.0f, r,g,b, -0.2f,  0.0f, 0.0f, r,g,b,
+        -0.2f,  0.0f, 0.0f, r,g,b, -0.1f,  0.0f, 0.0f, r,g,b, -0.1f,  0.1f, 0.0f, r,g,b,
+        -0.2f,  0.0f, 0.0f, r,g,b, -0.1f,  0.1f, 0.0f, r,g,b, -0.2f,  0.1f, 0.0f, r,g,b,
+        -0.2f,  0.1f, 0.0f, r,g,b, -0.1f,  0.1f, 0.0f, r,g,b, -0.1f,  0.2f, 0.0f, r,g,b,
+        -0.2f,  0.1f, 0.0f, r,g,b, -0.1f,  0.2f, 0.0f, r,g,b, -0.2f,  0.2f, 0.0f, r,g,b,
         // Puente (1 cuadro)
-        -0.1f, 0.2f, 0.0f, rH,gH,bH,  0.0f, 0.2f, 0.0f, rH,gH,bH,  0.0f, 0.3f, 0.0f, rH,gH,bH,
-        -0.1f, 0.2f, 0.0f, rH,gH,bH,  0.0f, 0.3f, 0.0f, rH,gH,bH, -0.1f, 0.3f, 0.0f, rH,gH,bH,
+        -0.1f,  0.0f, 0.0f, r,g,b,  0.0f,  0.0f, 0.0f, r,g,b,  0.0f,  0.1f, 0.0f, r,g,b,
+        -0.1f,  0.0f, 0.0f, r,g,b,  0.0f,  0.1f, 0.0f, r,g,b, -0.1f,  0.1f, 0.0f, r,g,b,
         // Poste Der (4 cuadros)
-         0.0f, 0.0f, 0.0f, rH,gH,bH,  0.1f, 0.0f, 0.0f, rH,gH,bH,  0.1f, 0.1f, 0.0f, rH,gH,bH,
-         0.0f, 0.0f, 0.0f, rH,gH,bH,  0.1f, 0.1f, 0.0f, rH,gH,bH,  0.0f, 0.1f, 0.0f, rH,gH,bH,
-         0.0f, 0.1f, 0.0f, rH,gH,bH,  0.1f, 0.1f, 0.0f, rH,gH,bH,  0.1f, 0.2f, 0.0f, rH,gH,bH,
-         0.0f, 0.1f, 0.0f, rH,gH,bH,  0.1f, 0.2f, 0.0f, rH,gH,bH,  0.0f, 0.2f, 0.0f, rH,gH,bH,
-         0.0f, 0.2f, 0.0f, rH,gH,bH,  0.1f, 0.2f, 0.0f, rH,gH,bH,  0.1f, 0.3f, 0.0f, rH,gH,bH,
-         0.0f, 0.2f, 0.0f, rH,gH,bH,  0.1f, 0.3f, 0.0f, rH,gH,bH,  0.0f, 0.3f, 0.0f, rH,gH,bH,
-         0.0f, 0.3f, 0.0f, rH,gH,bH,  0.1f, 0.3f, 0.0f, rH,gH,bH,  0.1f, 0.4f, 0.0f, rH,gH,bH,
-         0.0f, 0.3f, 0.0f, rH,gH,bH,  0.1f, 0.4f, 0.0f, rH,gH,bH,  0.0f, 0.4f, 0.0f, rH,gH,bH,
+         0.0f, -0.2f, 0.0f, r,g,b,  0.1f, -0.2f, 0.0f, r,g,b,  0.1f, -0.1f, 0.0f, r,g,b,
+         0.0f, -0.2f, 0.0f, r,g,b,  0.1f, -0.1f, 0.0f, r,g,b,  0.0f, -0.1f, 0.0f, r,g,b,
+         0.0f, -0.1f, 0.0f, r,g,b,  0.1f, -0.1f, 0.0f, r,g,b,  0.1f,  0.0f, 0.0f, r,g,b,
+         0.0f, -0.1f, 0.0f, r,g,b,  0.1f,  0.0f, 0.0f, r,g,b,  0.0f,  0.0f, 0.0f, r,g,b,
+         0.0f,  0.0f, 0.0f, r,g,b,  0.1f,  0.0f, 0.0f, r,g,b,  0.1f,  0.1f, 0.0f, r,g,b,
+         0.0f,  0.0f, 0.0f, r,g,b,  0.1f,  0.1f, 0.0f, r,g,b,  0.0f,  0.1f, 0.0f, r,g,b,
+         0.0f,  0.1f, 0.0f, r,g,b,  0.1f,  0.1f, 0.0f, r,g,b,  0.1f,  0.2f, 0.0f, r,g,b,
+         0.0f,  0.1f, 0.0f, r,g,b,  0.1f,  0.2f, 0.0f, r,g,b,  0.0f,  0.2f, 0.0f, r,g,b,
 
-         // --- LETRA M (28 Triángulos / 84 vértices) ---
-         // Poste 1 (4 cuadros)
-         0.3f, 0.0f, 0.0f, rM,gM,bM, 0.4f, 0.0f, 0.0f, rM,gM,bM, 0.4f, 0.1f, 0.0f, rM,gM,bM,
-         0.3f, 0.0f, 0.0f, rM,gM,bM, 0.4f, 0.1f, 0.0f, rM,gM,bM, 0.3f, 0.1f, 0.0f, rM,gM,bM,
-         0.3f, 0.1f, 0.0f, rM,gM,bM, 0.4f, 0.1f, 0.0f, rM,gM,bM, 0.4f, 0.2f, 0.0f, rM,gM,bM,
-         0.3f, 0.1f, 0.0f, rM,gM,bM, 0.4f, 0.2f, 0.0f, rM,gM,bM, 0.3f, 0.2f, 0.0f, rM,gM,bM,
-         0.3f, 0.2f, 0.0f, rM,gM,bM, 0.4f, 0.2f, 0.0f, rM,gM,bM, 0.4f, 0.3f, 0.0f, rM,gM,bM,
-         0.3f, 0.2f, 0.0f, rM,gM,bM, 0.4f, 0.3f, 0.0f, rM,gM,bM, 0.3f, 0.3f, 0.0f, rM,gM,bM,
-         0.3f, 0.3f, 0.0f, rM,gM,bM, 0.4f, 0.3f, 0.0f, rM,gM,bM, 0.4f, 0.4f, 0.0f, rM,gM,bM,
-         0.3f, 0.3f, 0.0f, rM,gM,bM, 0.4f, 0.4f, 0.0f, rM,gM,bM, 0.3f, 0.4f, 0.0f, rM,gM,bM,
-         // Conector 1 (Top bridge)
-         0.4f, 0.3f, 0.0f, rM,gM,bM, 0.5f, 0.3f, 0.0f, rM,gM,bM, 0.5f, 0.4f, 0.0f, rM,gM,bM,
-         0.4f, 0.3f, 0.0f, rM,gM,bM, 0.5f, 0.4f, 0.0f, rM,gM,bM, 0.4f, 0.4f, 0.0f, rM,gM,bM,
-         // Poste 2 - Centro (4 cuadros)
-         0.5f, 0.0f, 0.0f, rM,gM,bM, 0.6f, 0.0f, 0.0f, rM,gM,bM, 0.6f, 0.1f, 0.0f, rM,gM,bM,
-         0.5f, 0.0f, 0.0f, rM,gM,bM, 0.6f, 0.1f, 0.0f, rM,gM,bM, 0.5f, 0.1f, 0.0f, rM,gM,bM,
-         0.5f, 0.1f, 0.0f, rM,gM,bM, 0.6f, 0.1f, 0.0f, rM,gM,bM, 0.6f, 0.2f, 0.0f, rM,gM,bM,
-         0.5f, 0.1f, 0.0f, rM,gM,bM, 0.6f, 0.2f, 0.0f, rM,gM,bM, 0.5f, 0.2f, 0.0f, rM,gM,bM,
-         0.5f, 0.2f, 0.0f, rM,gM,bM, 0.6f, 0.2f, 0.0f, rM,gM,bM, 0.6f, 0.3f, 0.0f, rM,gM,bM,
-         0.5f, 0.2f, 0.0f, rM,gM,bM, 0.6f, 0.3f, 0.0f, rM,gM,bM, 0.5f, 0.3f, 0.0f, rM,gM,bM,
-         0.5f, 0.3f, 0.0f, rM,gM,bM, 0.6f, 0.3f, 0.0f, rM,gM,bM, 0.6f, 0.4f, 0.0f, rM,gM,bM,
-         0.5f, 0.3f, 0.0f, rM,gM,bM, 0.6f, 0.4f, 0.0f, rM,gM,bM, 0.5f, 0.4f, 0.0f, rM,gM,bM,
-         // Conector 2 (Top bridge)
-         0.6f, 0.3f, 0.0f, rM,gM,bM, 0.7f, 0.3f, 0.0f, rM,gM,bM, 0.7f, 0.4f, 0.0f, rM,gM,bM,
-         0.6f, 0.3f, 0.0f, rM,gM,bM, 0.7f, 0.4f, 0.0f, rM,gM,bM, 0.6f, 0.4f, 0.0f, rM,gM,bM,
-         // Poste 3 (4 cuadros)
-         0.7f, 0.0f, 0.0f, rM,gM,bM, 0.8f, 0.0f, 0.0f, rM,gM,bM, 0.8f, 0.1f, 0.0f, rM,gM,bM,
-         0.7f, 0.0f, 0.0f, rM,gM,bM, 0.8f, 0.1f, 0.0f, rM,gM,bM, 0.7f, 0.1f, 0.0f, rM,gM,bM,
-         0.7f, 0.1f, 0.0f, rM,gM,bM, 0.8f, 0.1f, 0.0f, rM,gM,bM, 0.8f, 0.2f, 0.0f, rM,gM,bM,
-         0.7f, 0.1f, 0.0f, rM,gM,bM, 0.8f, 0.2f, 0.0f, rM,gM,bM, 0.7f, 0.2f, 0.0f, rM,gM,bM,
-         0.7f, 0.2f, 0.0f, rM,gM,bM, 0.8f, 0.2f, 0.0f, rM,gM,bM, 0.8f, 0.3f, 0.0f, rM,gM,bM,
-         0.7f, 0.2f, 0.0f, rM,gM,bM, 0.8f, 0.3f, 0.0f, rM,gM,bM, 0.7f, 0.3f, 0.0f, rM,gM,bM,
-         0.7f, 0.3f, 0.0f, rM,gM,bM, 0.8f, 0.3f, 0.0f, rM,gM,bM, 0.8f, 0.4f, 0.0f, rM,gM,bM,
-         0.7f, 0.3f, 0.0f, rM,gM,bM, 0.8f, 0.4f, 0.0f, rM,gM,bM, 0.7f, 0.4f, 0.0f, rM,gM,bM
+        // --- LETRA M (Esquina superior derecha) ---
+        // Desplazada a la posición X: 0.3 a 0.8, Y: 0.3 a 0.7
+        // Poste 1 (4 cuadros)
+         0.3f,  0.3f, 0.0f, r,g,b,  0.4f,  0.3f, 0.0f, r,g,b,  0.4f,  0.4f, 0.0f, r,g,b,
+         0.3f,  0.3f, 0.0f, r,g,b,  0.4f,  0.4f, 0.0f, r,g,b,  0.3f,  0.4f, 0.0f, r,g,b,
+         0.3f,  0.4f, 0.0f, r,g,b,  0.4f,  0.4f, 0.0f, r,g,b,  0.4f,  0.5f, 0.0f, r,g,b,
+         0.3f,  0.4f, 0.0f, r,g,b,  0.4f,  0.5f, 0.0f, r,g,b,  0.3f,  0.5f, 0.0f, r,g,b,
+         0.3f,  0.5f, 0.0f, r,g,b,  0.4f,  0.5f, 0.0f, r,g,b,  0.4f,  0.6f, 0.0f, r,g,b,
+         0.3f,  0.5f, 0.0f, r,g,b,  0.4f,  0.6f, 0.0f, r,g,b,  0.3f,  0.6f, 0.0f, r,g,b,
+         0.3f,  0.6f, 0.0f, r,g,b,  0.4f,  0.6f, 0.0f, r,g,b,  0.4f,  0.7f, 0.0f, r,g,b,
+         0.3f,  0.6f, 0.0f, r,g,b,  0.4f,  0.7f, 0.0f, r,g,b,  0.3f,  0.7f, 0.0f, r,g,b,
+        // Conector 1
+         0.4f,  0.6f, 0.0f, r,g,b,  0.5f,  0.6f, 0.0f, r,g,b,  0.5f,  0.7f, 0.0f, r,g,b,
+         0.4f,  0.6f, 0.0f, r,g,b,  0.5f,  0.7f, 0.0f, r,g,b,  0.4f,  0.7f, 0.0f, r,g,b,
+        // Poste 2 - Centro (4 cuadros)
+         0.5f,  0.3f, 0.0f, r,g,b,  0.6f,  0.3f, 0.0f, r,g,b,  0.6f,  0.4f, 0.0f, r,g,b,
+         0.5f,  0.3f, 0.0f, r,g,b,  0.6f,  0.4f, 0.0f, r,g,b,  0.5f,  0.4f, 0.0f, r,g,b,
+         0.5f,  0.4f, 0.0f, r,g,b,  0.6f,  0.4f, 0.0f, r,g,b,  0.6f,  0.5f, 0.0f, r,g,b,
+         0.5f,  0.4f, 0.0f, r,g,b,  0.6f,  0.5f, 0.0f, r,g,b,  0.5f,  0.5f, 0.0f, r,g,b,
+         0.5f,  0.5f, 0.0f, r,g,b,  0.6f,  0.5f, 0.0f, r,g,b,  0.6f,  0.6f, 0.0f, r,g,b,
+         0.5f,  0.5f, 0.0f, r,g,b,  0.6f,  0.6f, 0.0f, r,g,b,  0.5f,  0.6f, 0.0f, r,g,b,
+         0.5f,  0.6f, 0.0f, r,g,b,  0.6f,  0.6f, 0.0f, r,g,b,  0.6f,  0.7f, 0.0f, r,g,b,
+         0.5f,  0.6f, 0.0f, r,g,b,  0.6f,  0.7f, 0.0f, r,g,b,  0.5f,  0.7f, 0.0f, r,g,b,
+        // Conector 2
+         0.6f,  0.6f, 0.0f, r,g,b,  0.7f,  0.6f, 0.0f, r,g,b,  0.7f,  0.7f, 0.0f, r,g,b,
+         0.6f,  0.6f, 0.0f, r,g,b,  0.7f,  0.7f, 0.0f, r,g,b,  0.6f,  0.7f, 0.0f, r,g,b,
+        // Poste 3 (4 cuadros)
+         0.7f,  0.3f, 0.0f, r,g,b,  0.8f,  0.3f, 0.0f, r,g,b,  0.8f,  0.4f, 0.0f, r,g,b,
+         0.7f,  0.3f, 0.0f, r,g,b,  0.8f,  0.4f, 0.0f, r,g,b,  0.7f,  0.4f, 0.0f, r,g,b,
+         0.7f,  0.4f, 0.0f, r,g,b,  0.8f,  0.4f, 0.0f, r,g,b,  0.8f,  0.5f, 0.0f, r,g,b,
+         0.7f,  0.4f, 0.0f, r,g,b,  0.8f,  0.5f, 0.0f, r,g,b,  0.7f,  0.5f, 0.0f, r,g,b,
+         0.7f,  0.5f, 0.0f, r,g,b,  0.8f,  0.5f, 0.0f, r,g,b,  0.8f,  0.6f, 0.0f, r,g,b,
+         0.7f,  0.5f, 0.0f, r,g,b,  0.8f,  0.6f, 0.0f, r,g,b,  0.7f,  0.6f, 0.0f, r,g,b,
+         0.7f,  0.6f, 0.0f, r,g,b,  0.8f,  0.6f, 0.0f, r,g,b,  0.8f,  0.7f, 0.0f, r,g,b,
+         0.7f,  0.6f, 0.0f, r,g,b,  0.8f,  0.7f, 0.0f, r,g,b,  0.7f,  0.7f, 0.0f, r,g,b
     };
 
     glGenVertexArrays(1, &VAO);
@@ -171,7 +172,7 @@ int main() {
         glUseProgram(shader);
         glBindVertexArray(VAO);
 
-        // Paso 1: Relleno (isBlack = 0) [cite: 61]
+        // Paso 1: Relleno (isBlack = 0)  
         glUniform1i(uniformBlack, 0);
         glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
         glDrawArrays(GL_TRIANGLES, 0, 186); // 16+18+28 triángulos 
