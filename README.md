@@ -11,6 +11,7 @@
 ## Datos del Alumno
 * **Nombre:** Mejía Alba Israel Hipólito
 * **Nº de Cuenta:** 315348079
+* **Grupo de Laboratorio:** 03
 * **Grupo de Teoría:** 06
 * **Semestre:** 2026-1
 * **Laboratorio:** Computación Gráfica e Interacción Humano-Computadora 
