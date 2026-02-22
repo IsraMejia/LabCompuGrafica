@@ -1,31 +1,33 @@
-# Laboratorio de Computación Gráfica e Interacción Humano-Computadora
-## Práctica 1: Introducción a OpenGL y GLSL
+# Computación Gráfica e Interacción Humano-Computadora
 
-### 🎓 Datos del Alumno
+<p align="center">
+  <b>UNIVERSIDAD NACIONAL AUTÓNOMA DE MÉXICO</b><br>
+  <br> 
+  <b>FACULTAD DE INGENIERÍA</b><br>
+  <b>DIVISIÓN DE INGENIERÍA ELÉCTRICA</b><br>
+  <b>INGENIERÍA EN COMPUTACIÓN</b>
+</p>
+
+## Datos del Alumno
 * **Nombre:** Mejía Alba Israel Hipólito
 * **No. Cuenta:** 315348079
 * **Semestre:** 2026-2
 * **Grupo de Laboratorio:** 03
 * **Grupo de Teoría:** 06
-* **Profesor:** Ing. José Roque Román Guadarrama
+* **Semestre:** 2026-1
+* **Laboratorio:** Computación Gráfica e Interacción Humano-Computadora 
+* **Profesor:** Ing. José Roque Román Guadarrama 
 
 ---
 
-### 📝 Descripción de la Práctica
-En esta primera entrega se realizó la configuración del entorno de desarrollo utilizando las librerías **GLFW** y **GLEW**. El objetivo principal fue aprender el manejo de:
-* **Shaders (Vertex y Fragment)** para el procesamiento de posiciones y colores.
-* **VAO y VBO** para la transferencia de datos a la GPU y de esta forma mediante la union de vertices realizar nuestros primeros dibujos con graficos por computadora.
+## 📂 Descripción del Repositorio
+Este repositorio contiene los ejercicios de clase, modelos, imágenes y reportes de práctica realizados durante el semestre 2026-1. La estructura se organiza mediante ramas (branches) para cada entrega específica.
 
-Como resultado, se renderizaron las iniciales **"IHM"** utilizando la union de vertices, que mediante multiples triangulos, se realizo cada una de las letras.   
- 
+### 🚀 Entregas Disponibles
+* **Rama: Practica1**: Introducción a OpenGL y GLSL. Incluye el dibujo de iniciales (IHM) con mallas internas y fondo dinámico.
 
 ---
 
-### 🚀 Instrucciones para visualizar el ejecutable
-Para que el profesor pueda evaluar la ejecución de la práctica sin necesidad de compilar, se han incluido los archivos necesarios en la carpeta de entrega:
 
-1. **Ubicación:** Navegar a la carpeta `/Release` dentro de esta rama.
-2. **Dependencias:** El directorio ya contiene los archivos `glew32.dll` y `glfw3.dll` necesarios para la ejecución.
-3. **Ejecución:** Ejecutar el archivo **`LabCGeiHC.exe`**.
 
- 
+> **Nota:** El proyecto fue desarrollado en C++ utilizando Visual Studio 2017+ y las librerías GLEW y GLFW .
