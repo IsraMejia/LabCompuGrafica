@@ -1,7 +1,7 @@
 # Computación Gráfica e Interacción Humano-Computadora
 
 <p align="center">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Logo_UNAM.svg" alt="UNAM" width="100" height="100">
+  <img src="https://elemblob.blob.core.windows.net/institucion/unam5be9b69ef0a8b_500h.jpg" alt="UNAM" width="100" height="100">
   <br>
   <b>UNIVERSIDAD NACIONAL AUTÓNOMA DE MÉXICO</b><br>
   <b>FACULTAD DE INGENIERÍA</b><br>
