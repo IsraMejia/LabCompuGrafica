@@ -1,5 +1,5 @@
 # Laboratorio de Computación Gráfica e Interacción Humano-Computadora
-## Práctica 3: modelado geométrico 
+## Práctica 4: Modelado Jerárquico 
 
 ### 🎓 Datos del Alumno
 * **Nombre:** Mejía Alba Israel Hipólito
