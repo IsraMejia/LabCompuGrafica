@@ -36,7 +36,7 @@ Window mainWindow;
 vector<Mesh*> meshList;
 vector<Shader>shaderList;
 //Vertex Shader
-static const char* vShader = "shaders/shader.vert";
+static const char* vShader = "shaders/shader.vert"; 
 static const char* fShader = "shaders/shader.frag";
 Sphere sp = Sphere(1.0, 20, 20); //recibe radio, slices, stacks
 
