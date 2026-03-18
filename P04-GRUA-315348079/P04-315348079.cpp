@@ -2,6 +2,7 @@
 Se implementa el uso de matrices adicionales para almacenar información de transformaciones geométricas que se quiere
 heredar entre diversas instancias para que estén unidas
 Teclas de la F a la K para rotaciones de articulaciones
+Teclas para mover las llantas v,b,n,m
 */
 #include <stdio.h>
 #include <string.h>
@@ -236,12 +237,16 @@ int main()
 
 	CrearCubo();//índice 0 en MeshList
 	CrearPiramideTriangular();//índice 1 en MeshList
-	CrearCilindro(5, 1.0f);//índice 2 en MeshList
+	CrearCilindro(10, 1.0f);//índice 2 en MeshList
 	CrearCono(25, 2.0f);//índice 3 en MeshList
 	CrearPiramideCuadrangular();//índice 4 en MeshList
 	CreateShaders();
 
-	camera = Camera(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), -60.0f, 0.0f, 0.2f, 0.2f);
+	//camera = Camera(glm::vec3(-5.0f, 5.0f, 15.0f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f, -5.0f, 0.2f, 0.2f); // Ajustes para que en mi pantalla al mover el mouse donde se abre la ventana se vea la grua
+	//camera = Camera(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), -60.0f, 0.0f, 0.2f, 0.2f); // Mouse al centro de la pantalla si se ve la grua, pero al mover la camara se desacomoda todo
+	
+	camera = Camera(glm::vec3(-5.0f, 5.0f, 15.0f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f, -5.0f, 0.2f, 0.2f);
+
 	GLuint uniformProjection = 0;
 	GLuint uniformModel = 0;
 	GLuint uniformView = 0;
@@ -282,25 +287,83 @@ int main()
 
 		// ---------------------------------------------------------
 		// NODO RAÍZ GLOBAL
-		// ---------------------------------------------------------
 		// Trasladamos todo el sistema hacia atrás para que sea visible por la cámara
 		model = glm::translate(model, glm::vec3(0.0f, 0.0f, -20.0f));
 		modelaux = model; // GUARDAMOS EL NODO RAÍZ. De aquí partirá tanto la base como el brazo.
 
 		// ---------------------------------------------------------
-		// BASE (Cuerpo del tractor sin llantas)
+		// 1. PIRÁMIDE (Base inferior incrustada en el chasis)
 		// ---------------------------------------------------------
-		// Nos movemos hacia abajo respecto a la raíz para asentar la base
+		model = modelaux;
+		// La movemos un poco hacia abajo para que el pico quede dentro del prisma rectangular
+		model = glm::translate(model, glm::vec3(0.0f, -1.8f, 0.0f));
+		glm::mat4 modelLlantas = model; // Guardamos el centro de esta pirámide como ancla para las llantas
+		
+		model = glm::scale(model, glm::vec3(4.5f, 2.0f, 3.5f)); // La hacemos ligeramente más ancha que el chasis
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		color = glm::vec3(0.0f, 0.3f, 0.8f); // Color azul para distinguirla
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		meshList[4]->RenderMesh(); // meshList[4] es tu Pirámide Cuadrangular
+
+		// ---------------------------------------------------------
+		// 2. LLANTAS (Hijas de la Pirámide)
+		// ---------------------------------------------------------
+		// Llanta 1 (Delantera Derecha - Control con V)
+		model = modelLlantas;
+		model = glm::translate(model, glm::vec3(2.0f, -0.5f, 1.8f)); // Nos movemos a la esquina
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f)); // Acostamos el cilindro
+		model = glm::rotate(model, glm::radians(mainWindow.getrueda1()), glm::vec3(0.0f, 1.0f, 0.0f)); // Giro independiente
+		model = glm::scale(model, glm::vec3(1.0f, 0.5f, 1.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		color = glm::vec3(0.15f, 0.95f, 0.55f);  
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		meshList[2]->RenderMeshGeometry(); // IMPORTANTE: tu cilindro requiere RenderMeshGeometry()
+
+		// Llanta 2 (Delantera Izquierda - Control con B)
+		model = modelLlantas;
+		model = glm::translate(model, glm::vec3(-2.0f, -0.5f, 1.8f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(mainWindow.getrueda2()), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(1.0f, 0.5f, 1.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		meshList[2]->RenderMeshGeometry();
+
+		// Llanta 3 (Trasera Derecha - Control con N)
+		model = modelLlantas;
+		model = glm::translate(model, glm::vec3(2.0f, -0.5f, -1.8f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(mainWindow.getrueda3()), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(1.0f, 0.5f, 1.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		meshList[2]->RenderMeshGeometry();
+
+		// Llanta 4 (Trasera Izquierda - Control con M)
+		model = modelLlantas;
+		model = glm::translate(model, glm::vec3(-2.0f, -0.5f, -1.8f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(mainWindow.getrueda4()), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(1.0f, 0.5f, 1.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		meshList[2]->RenderMeshGeometry();
+
+		// ---------------------------------------------------------
+		// 3. BASE (Cuerpo principal de la grúa)
+		// ---------------------------------------------------------
+		model = modelaux;
 		model = glm::translate(model, glm::vec3(0.0f, -0.9f, 0.0f));
-		// Aplicamos escala para darle forma de chasis y dibujamos
 		model = glm::scale(model, glm::vec3(4.0f, 2.0f, 3.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		color = glm::vec3(0.4f, 0.4f, 0.4f); // Gris
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
-		meshList[0]->RenderMesh();
-  
+		meshList[0]->RenderMesh(); // Cubo original
+
+		 
+
 		// Recuperamos el nodo raíz para que la articulación NO herede la escala de la base
-		model = modelaux;
+		model = modelaux; 
 		// ---------------------------------------------------------
 		// ARTICULACIÓN 1 (Esfera que une la base con el Brazo 1)
 		// ---------------------------------------------------------
@@ -325,14 +388,14 @@ int main()
 		model = glm::rotate(model, glm::radians(135.0f), glm::vec3(0.0f, 0.0f, 1.0f));
 		modelaux = model; // Guardamos el ancla para la articulación 2 (la unión entre el brazo 1 y el brazo 2)
 		model = glm::scale(model, glm::vec3(5.0f, 1.0f, 1.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model)); 
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
 		glUniformMatrix4fv(uniformView, 1, GL_FALSE, glm::value_ptr(camera.calculateViewMatrix()));
 
 		color = glm::vec3(1.0f, 0.0f, 1.0f); // Magenta
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		meshList[0]->RenderMesh();
-		 
+
 
 
 		// articulación 2
