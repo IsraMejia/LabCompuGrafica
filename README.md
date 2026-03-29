@@ -10,7 +10,7 @@
 * **Grupo de Teoría:** 06
 * **Profesor:** Ing. José Roque Román Guadarrama
 
-> **Nota:** El código relacionado y los ejecutables de cada uno de los ejercicios realizados están en sus respectivas carpetas dentro del proyecto. Este repositorio contiene la implementación del modelo jerárquico de un **Mustang GT** con transformaciones anidadas.
+ 
 
 ---
 
@@ -31,23 +31,4 @@ El modelo del automóvil está estructurado jerárquicamente: **Chasis (Padre) -
 
 ---
 
-### 🛠️ Detalles de Implementación
-
-Para lograr que el modelo funcione como una unidad, se aplicó el concepto de **Grafo de Escena** básico:
-
-1.  **Modelo 3D:** Se importaron modelos independientes en formato `.obj` para el chasis, cofre y cada una de las 4 llantas.
-2.  **Jerarquía:** Se utilizó una `parentMatrix` para el chasis, la cual hereda su escala (10x), rotación de orientación y traslación global a todos los componentes hijos mediante la multiplicación de matrices.
-3.  **Colorización:** * **Chasis:** Dorado (`1.0f, 0.84f, 0.0f`)
-    * **Cofre:** Azul (`0.0f, 0.0f, 1.0f`)
-    * **Llantas:** Morado (`0.5f, 0.0f, 0.5f`)
-    * **Suelo:** Pasto sintético (`0.01f, 0.9f, 0.02f`)
-
----
-
-### 📂 Estructura de Ejercicios
-* **Ej04-315348079:** Introducción a transformaciones.
-* **P04-GRUA-315348079:** Ejercicio de brazo robótico.
-* **P04-ANIMAL-315348079:** Modelo de Mustang Jerárquico (Rama actual).
-
----
-*Generado para la asignatura de Computación Gráfica - UNAM FI.*
+ 
